@@ -1,0 +1,64 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Location Check</title>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            let database = [
+            { username: "Amrit", password: "1234" },
+            { username: "kaur", password: "2345" },
+            { username: "jhinjer", password: "3456" },
+            { username: "chitkara", password: "4567" },
+            { username: "university", password: "5678" },
+            { username: "punjab", password: "6789" },
+            { username: "chandigarh", password: "7890" },
+            { username: "engineerr", password: "8901" },
+            { username: "cuiet", password: "1345" },
+            { username: "flower", password: "2456" },
+            { username: "javascript", password: "3567" },
+            { username: "objectoriented", password: "4678" },
+            { username: "gurleen", password: "5789" },
+            { username: "jasleen", password: "6890" },
+            { username: "jashan", password: "7901" }
+            ];
+
+            function isUserValid(username, password) {
+                for (let i = 0; i < database.length; i++) {
+                    if (database[i].username === username && database[i].password === password) {
+                        return true;
+                    }
+                }
+                return false;
+            }
+
+            function signIn(username, password, location) {
+                if (isUserValid(username, password)) {
+                    if (location === "punjab") {
+                        window.location = "https://www.google.com/maps?q=punjab";
+                    } else if (location === "haryana") {
+                        window.location = "https://www.google.com/maps?q=haryana";
+                    } else if (location === "chandigarh") {
+                        window.location = "https://www.google.com/maps?q=chandigarh";
+                    }
+                } else {
+                    alert("Wrong Credentials");
+                }
+            }
+
+            let location = prompt("Enter your location: ");
+            if (location.toLowerCase() === "punjab" || location.toLowerCase() === "haryana" || location.toLowerCase() === "chandigarh") {
+                let usernamePrompt = prompt("Enter your Username");
+                let passwordPrompt = prompt("Enter your Password");
+                signIn(usernamePrompt, passwordPrompt, location.toLowerCase());
+            } else {
+                alert("Access Denied");
+            }
+        });
+    </script>
+</head>
+<body>
+</body>
+</html>
